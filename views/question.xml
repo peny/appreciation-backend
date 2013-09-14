@@ -7,7 +7,6 @@
       <Binary>
         <MimeType>
           <Type>image</Type>
-          <SubType>jpeg</SubType>
         </MimeType>
         <DataURL><%= imageurl %></DataURL>
         <AltText>Please value the item in the picture</AltText>
