@@ -1,0 +1,18 @@
+<QuestionForm xmlns="http://mechanicalturk.amazonaws.com/AWSMechanicalTurkDataSchemas/2005-10-01/QuestionForm.xsd">
+  <Question>
+    <QuestionIdentifier>Question100</QuestionIdentifier>
+    <DisplayName>My Question</DisplayName>
+    <IsRequired>true</IsRequired>
+    <QuestionContent>
+      <Binary>
+        <MimeType>
+          <Type>image</Type>
+          <SubType>gif</SubType>
+        </MimeType>
+        <DataURL>http://tictactoe.amazon.com/game/01523/board.gif</DataURL>
+        <AltText>The game board, with "X" to move.</AltText>
+      </Binary>
+    </QuestionContent>
+    <AnswerSpecification><FreeTextAnswer/></AnswerSpecification>
+  </Question>
+</QuestionForm>
