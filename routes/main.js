@@ -1,7 +1,7 @@
 var fs = require('fs');
 var director = require('director');
 
-var mechaturk = require('./lib/mechaturk.js');
+var mechaturk = require('../lib/mechaturk.js');
 
 function renderIndex(){
   var _this = this;
@@ -13,10 +13,15 @@ function renderIndex(){
     _this.res.end(JSON.stringify(data));
 }
 
-function saveAppreciationRequest(data){
+function saveAppreciationRequest(){
     var _this = this;
-    console.log(data);
-    mechaturk.createHIT(data);
+    console.log(_this.res);
+    mechaturk.createHIT({});
+  _this.res.writeHead(200,{'Content-Type': 'text/html; charset=utf8'});
+    var data = {
+        price: Math.floor(Math.random()*600),
+    };
+    _this.res.end('<h1>OK! YOU\'RE DONE</h1>');
 }
 
 var router = new director.http.Router({
