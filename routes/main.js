@@ -19,7 +19,7 @@ function renderStaticFile(req,res){
 
 	
 	fs.readFile('uploads'+filename, function(err,file){
-console.log(err);
+		console.log(err);
 		res.write(file);
 	});
 }
@@ -35,7 +35,12 @@ fs.readFile(req.files.images.path, function (err, data) {
 
     console.log(req);
 	console.log(req.files);
-    mechaturk.createHIT({});
+
+	var data = {
+		imageurl: 'uploads/'+req.files.images.name
+	};
+console.log(data);
+    mechaturk.createHIT(data);
   res.writeHead(200,{'Content-Type': 'text/html; charset=utf8'});
     var data = {
         price: Math.floor(Math.random()*600),
