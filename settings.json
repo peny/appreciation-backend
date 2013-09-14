@@ -1,6 +1,0 @@
-{
-    amazon:{
-        accessKeyId: "YOURACCESSKEY",
-        secretAccessKey: "YOURSECRETACCESSKEY"
-    },
-}
