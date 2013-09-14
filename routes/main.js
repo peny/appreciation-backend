@@ -1,5 +1,7 @@
-var director = require('director');
 var fs = require('fs');
+var director = require('director');
+
+var mechaturk = require('./lib/mechaturk.js');
 
 function renderIndex(){
   var _this = this;
@@ -11,12 +13,19 @@ function renderIndex(){
     _this.res.end(JSON.stringify(data));
 }
 
+function saveAppreciationRequest(data){
+    var _this = this;
+    console.log(data);
+    mechaturk.createHIT(data);
+}
+
 var router = new director.http.Router({
   '/': {
     get: renderIndex
   },
-  '/site': {
-    get: renderIndex
+  '/appreciation': {
+    get: renderIndex,
+    post: saveAppreciationRequest
   }
 });
 
