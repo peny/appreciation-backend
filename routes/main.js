@@ -1,6 +1,7 @@
 var fs = require('fs');
 
 var mechaturk = require('../lib/mechaturk.js');
+var db = require('../lib/db.js');
 
 function renderIndex(req,res){
   var _this = this;
@@ -37,6 +38,7 @@ function saveAppreciationRequest(req, res){
     storeid: req.body.storeid,
     storedashboardurl: req.body.storedashboardurl
   };
+db.getQuota(data.storeid);
   mechaturk.createHIT(data);
   res.writeHead(200,{'Content-Type': 'text/html; charset=utf8'});
   fs.readFile('views/done.html', function(err, html){
