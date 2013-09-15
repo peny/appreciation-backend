@@ -22,21 +22,3 @@ app.get('/', function(req, res){
 });
 
 app.listen(8042);
-
-/*
-var http = require('http');
-var request = require('request');
-var router = require('./routes/main.js');
-var union = require('union');
-
-var server = union.createServer({
-before: [	
-	function(req, res){
-	  var found = router.dispatch(req, res);
-		if(!found){
-	res.emit('next');
-}
-	}
-]
-});
-server.listen(8042);*/
