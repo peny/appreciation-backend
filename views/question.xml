@@ -4,6 +4,7 @@
     <DisplayName><%= questionname %></DisplayName>
     <IsRequired>true</IsRequired>
     <QuestionContent>
+      <Text>How much would someone pay for the item in the picture? (In USD)</Text>
       <Binary>
         <MimeType>
           <Type>image</Type>
