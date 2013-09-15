@@ -37,13 +37,11 @@ function saveAppreciationRequest(req, res){
 	  storeid: req.body.storeid,
 	  storedashboardurl: req.body.storedashboardurl	
 	};
-	console.log(data);
 	mechaturk.createHIT(data);
 	res.writeHead(200,{'Content-Type': 'text/html; charset=utf8'});
-	var data = {
-price: Math.floor(Math.random()*600),
-	};
-	res.end('<h1>OK! YOU\'RE DONE</h1>');
+	fs.readFile('views/done.html', function(err, html){
+		res.end(html);
+	});
 }
 
 module.exports.renderIndex = renderIndex;
