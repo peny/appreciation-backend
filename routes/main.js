@@ -19,7 +19,6 @@ function renderStaticFile(req,res){
   console.log(req.path);
   var filename = req.path.match(/\/[^\/]+$/);
 
-
   fs.readFile('uploads'+filename, function(err,file){
     console.log(err);
     res.write(file);
@@ -28,13 +27,15 @@ function renderStaticFile(req,res){
 
 function saveAppreciationRequest(req, res){
   var _this = this;
+	var filetype = req.files.images.name.match(/\..{2,5}$/);
+    var imagePath = "uploads/"+((new Date()).getTime())+filetype;
+console.log(imagePath);
   fs.readFile(req.files.images.path, function (err, data) {
-    var newPath = "uploads/"+req.files.images.name;
-    fs.writeFile(newPath, data, function (err) {
+    fs.writeFile(imagePath, data, function (err) {
     });
   });
   var data = {
-    imageurl: 'uploads/'+req.files.images.name,
+    imageurl: imagePath,
     accesstoken: req.body.accesstoken,
     storeid: req.body.storeid,
     storedashboardurl: req.body.storedashboardurl
