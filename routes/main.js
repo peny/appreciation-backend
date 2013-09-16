@@ -1,6 +1,7 @@
 var fs = require('fs');
 
 var mechaturk = require('../lib/mechaturk.js');
+var tictail = require('../lib/tictail.js');
 var db = require('../lib/db.js');
 
 function renderIndex(req,res){
@@ -39,11 +40,15 @@ function saveAppreciationRequest(req, res){
     storedashboardurl: req.body.storedashboardurl
   };
 db.getQuota(data.storeid);
+tictail.getUser({accessToken: req.body.accesstoken}, function(err,user){
+	if(!err){
   mechaturk.createHIT(data);
   res.writeHead(200,{'Content-Type': 'text/html; charset=utf8'});
   fs.readFile('views/done.html', function(err, html){
     res.end(html);
   });
+}
+});
 }
 
 module.exports.renderIndex = renderIndex;
