@@ -29,7 +29,6 @@ function saveAppreciationRequest(req, res){
   var _this = this;
 	var filetype = req.files.images.name.match(/\..{2,5}$/);
     var imagePath = "uploads/"+((new Date()).getTime())+filetype;
-console.log(imagePath);
   fs.readFile(req.files.images.path, function (err, data) {
     fs.writeFile(imagePath, data, function (err) {
     });
