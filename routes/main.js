@@ -5,13 +5,6 @@ var tictail = require('../lib/tictail.js');
 var db = require('../lib/db.js');
 
 function renderIndex(req,res){
-  var _this = this;
-
-  res.writeHead(200,{'Content-Type': 'application/json; charset=utf8'});
-  var data = {
-    price: Math.floor(Math.random()*600),
-  };
-  res.end(JSON.stringify(data));
 }
 
 function renderStaticFile(req,res){
@@ -39,16 +32,19 @@ function saveAppreciationRequest(req, res){
     storeid: req.body.storeid,
     storedashboardurl: req.body.storedashboardurl
   };
-db.getQuota(data.storeid);
-tictail.getUser({accessToken: req.body.accesstoken}, function(err,user){
+  db.getQuota(data.storeid);
+  tictail.getUser({accessToken: req.body.accesstoken}, function(err,user){
 	if(!err){
-  mechaturk.createHIT(data);
-  res.writeHead(200,{'Content-Type': 'text/html; charset=utf8'});
-  fs.readFile('views/done.html', function(err, html){
-    res.end(html);
+      mechaturk.createHIT(data);
+      res.writeHead(200,{'Content-Type': 'text/html; charset=utf8'});
+      fs.readFile('views/done.html', function(err, html){
+        res.end(html);
+      });
+    } else {
+      res.writeHead(403,{'Content-Type': 'text/html; charset=utf8'});
+      res.end('<h1>Could not find TicTail user</h1>')
+    }
   });
-}
-});
 }
 
 module.exports.renderIndex = renderIndex;
