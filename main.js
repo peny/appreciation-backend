@@ -3,6 +3,8 @@ var router = require('./routes/main.js');
 var app = express();
 app.configure(function(){
     app.use(express.bodyParser());
+    app.use('/media', express.static(__dirname + '/media'));
+    app.use(express.static(__dirname + '/public'));
 });
 
 
