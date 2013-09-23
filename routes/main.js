@@ -4,9 +4,6 @@ var mechaturk = require('../lib/mechaturk.js');
 var tictail = require('../lib/tictail.js');
 var db = require('../lib/db.js');
 
-function renderIndex(req,res){
-}
-
 function renderStaticFile(req,res){
   //This is as dumb as it gets, I'm sorry.
   console.log(req.path);
