@@ -1,8 +1,9 @@
 var express = require('express');
 var router = require('./routes/main.js');
 var app = express();
-app.use(express.bodyParser());
-
+app.configure(function(){
+    app.use(express.bodyParser());
+});
 
 
 app.get('/appreciation', function(req, res){
