@@ -33,6 +33,4 @@ function saveAppreciationRequest(req, res){
   });
 }
 
-module.exports.renderIndex = renderIndex;
 module.exports.saveAppreciationRequest = saveAppreciationRequest;
-module.exports.renderStaticFile = renderStaticFile;
